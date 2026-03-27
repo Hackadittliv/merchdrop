@@ -1,5 +1,5 @@
 /*
-  MerchDrop Landing Page — Home.tsx
+  MerchDrop Landing Page - Home.tsx
   Design: "Bold Creator Economy"
   - Dark deep navy #0F0A1E background
   - Gradient purple→pink→orange accents (matching logo)
@@ -441,7 +441,7 @@ export default function Home() {
             Vårt jobb.
           </h1>
           <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto mb-10 font-['Plus_Jakarta_Sans'] leading-relaxed">
-            Vi sätter upp din personliga merch-butik, hanterar produktion och frakt — du delar länken och tjänar{" "}
+            Vi sätter upp din personliga merch-butik, hanterar produktion och frakt - du delar länken och tjänar{" "}
             <span className="text-white font-bold">30% på varje försäljning</span>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -542,7 +542,7 @@ export default function Home() {
                 Vi fixar resten.
               </h2>
               <p className="text-muted-foreground text-lg font-['Plus_Jakarta_Sans'] leading-relaxed mb-8">
-                Som influencer, artist eller band har du nog med att skapa innehåll och underhålla din publik. Merch ska inte vara ett heltidsjobb — det ska vara en passiv inkomst som bara rullar på.
+                Som influencer, artist eller band har du nog med att skapa innehåll och underhålla din publik. Merch ska inte vara ett heltidsjobb - det ska vara en passiv inkomst som bara rullar på.
               </p>
               <div className="space-y-4">
                 {[
