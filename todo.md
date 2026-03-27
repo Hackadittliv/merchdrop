@@ -49,3 +49,5 @@
 - [x] Logo in navbar scrolls to top of page on click
 - [x] Build GDPR cookie consent banner component
 - [x] Integrate cookie banner into App.tsx
+- [x] Integrate Meta Pixel 926945980052624 with GDPR consent gating
+- [x] Fire Lead event on form submission (consent required)

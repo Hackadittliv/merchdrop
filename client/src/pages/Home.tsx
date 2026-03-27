@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
+import { trackLead } from "@/hooks/useMetaPixel";
 import { Link, useLocation } from "wouter";
 import {
   ShoppingBag,
@@ -228,6 +229,8 @@ function LeadForm() {
 
   const subscribeMutation = trpc.leads.subscribe.useMutation({
     onSuccess: () => {
+      // Fire Meta Pixel Lead event (only if user has accepted cookies)
+      trackLead(form.email);
       navigate("/tack");
     },
     onError: (err) => {

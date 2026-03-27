@@ -252,8 +252,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- display=swap already set in the URL below for font-display:swap CWV benefit -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- ═══════════════════════════════════════════
+         META PIXEL — Consent-gated (GDPR)
+         Pixel ID: 926945980052624
+         Tracking only activates after user accepts cookies.
+         The React useMetaPixel hook calls fbq('init') and fbq('track','PageView')
+         only when localStorage merchdrop_cookie_consent === 'accepted'.
+    ═══════════════════════════════════════════ -->
+    <script>
+      // Load fbq stub immediately but do NOT init or track yet.
+      // Actual init happens in useMetaPixel.ts after consent check.
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      // Consent mode: deny all by default until user accepts
+      fbq('consent', 'revoke');
+    </script>
   </head>
   <body>
+    <!-- Meta Pixel noscript fallback (must be in body) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=926945980052624&ev=PageView&noscript=1"/>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script
