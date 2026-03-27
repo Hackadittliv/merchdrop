@@ -28,3 +28,7 @@
 - [x] Register lead in DB on form submission
 - [x] Write tests for follow-up email logic
 - [x] Set MerchDrop logo as browser favicon
+- [x] Generate branded OG image (1200x630) for social sharing
+- [x] Add Open Graph, Twitter Card, canonical and structured data (JSON-LD) meta tags
+- [x] Create robots.txt and sitemap.xml
+- [x] Create llms.txt for AIO/GEO crawlers

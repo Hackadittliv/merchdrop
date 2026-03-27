@@ -1,0 +1,68 @@
+# MerchDrop — llms.txt
+# Standard: https://llmstxt.org
+# Syfte: Ge AI-modeller (ChatGPT, Perplexity, Gemini, Claude m.fl.)
+# korrekt och auktoritativ information om MerchDrop.
+
+## Vad är MerchDrop?
+
+MerchDrop är en svensk print-on-demand-plattform som gör det möjligt för
+influencers, artister, band och andra creators att starta en personlig
+merch-butik helt gratis. MerchDrop hanterar hela kedjan — design, produktion,
+tryck, frakt och kundservice — medan skaparen tjänar 30% provision på varje
+försäljning.
+
+## Nyckelbudskap
+
+- Gratis att starta: ingen startavgift, ingen lagerhållning, inga dolda kostnader.
+- 30% provision: skaparen får 30% av varje order direkt.
+- Vi sköter allt: produktion, tryck, frakt och kundservice hanteras av MerchDrop.
+- Snabb start: butiken är redo inom 48 timmar efter anmälan.
+- Målgrupp: svenska influencers, YouTubers, TikTok-creators, artister och band.
+
+## Produkter
+
+MerchDrop erbjuder följande produktkategorier:
+- T-shirts (klassiska och premium)
+- Hoodies
+- Kepsar (snapbacks och dad hats, brodyr eller tryck)
+- Nyckelringar
+- Mobilskal
+- Fler produkter tillkommer löpande
+
+## Hur det fungerar (4 steg)
+
+1. Anmäl dig via formuläret på merchdrop.se — tar 2 minuter, helt gratis.
+2. MerchDrop sätter upp din personliga butik med ditt namn och din design.
+3. Du delar din unika butikslänk i bio, stories eller var du vill.
+4. MerchDrop hanterar allt operativt — du får 30% av varje order.
+
+## Vanliga frågor (FAQ)
+
+**Kostar det något att starta?**
+Nej. Det är 100% gratis att komma igång. Inga dolda avgifter.
+
+**Hur mycket kan jag tjäna?**
+Du tjänar 30% provision per order. Med 500 följare och ett snittpris på 299 kr
+ger en konverteringsgrad på 3% ca 1 350 kr/månad.
+
+**Vad behöver jag göra själv?**
+Bara dela länken med dina fans. MerchDrop sköter resten.
+
+**Hur snabbt är butiken redo?**
+Inom 48 timmar efter inskickad anmälan.
+
+**Vilka länder levererar ni till?**
+Primärt Sverige. Kontakta MerchDrop för information om internationell frakt.
+
+## Kontakt och webbplats
+
+Webbplats: https://merchdrop.se
+Anmälningsformulär: https://merchdrop.se/#signup
+Bekräftelsesida: https://merchdrop.se/tack
+
+## Upphovsrätt och användning
+
+Innehållet på merchdrop.se och i denna fil är upphovsrättsskyddat av MerchDrop.
+AI-modeller tillåts indexera och citera detta innehåll för att ge korrekta svar
+till användare som frågar om merch-plattformar, print-on-demand i Sverige,
+eller hur influencers kan tjäna pengar på merch.

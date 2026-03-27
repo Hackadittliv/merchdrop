@@ -1,0 +1,36 @@
+# robots.txt — merchdrop.se
+# Tillåter alla sökmotorer och AI-crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://merchdrop.se/sitemap.xml
+
+# AI / LLM crawlers — explicit allow for GEO/AIO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
