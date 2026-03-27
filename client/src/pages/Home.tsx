@@ -662,28 +662,21 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12">
+      <footer className="border-t border-white/10 py-5">
         <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <img src={LOGO_URL} alt="MerchDrop" className="h-8 w-auto" />
-              <span className="text-muted-foreground text-sm font-['Plus_Jakarta_Sans']">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <img src={LOGO_URL} alt="MerchDrop" className="h-7 w-auto" />
+              <span className="text-white/30 text-xs font-['Plus_Jakarta_Sans']">
                 Din merch. Dina regler. Vårt jobb.
               </span>
             </div>
-            <div className="text-muted-foreground text-sm font-['Plus_Jakarta_Sans'] text-center md:text-right">
-              <p>© {new Date().getFullYear()} MerchDrop. Alla rättigheter förbehållna.</p>
-              <p className="mt-1">
-                Drivet av ett{" "}
-                <span className="text-purple-400">svenskt tryckeri</span>{" "}
-                med lång erfarenhet.
-              </p>
-              <p className="mt-1">
-                <Link href="/integritetspolicy" className="text-white/40 hover:text-purple-400 transition-colors">
-                  Integritetspolicy
-                </Link>
-              </p>
-              <p className="mt-2">
+            <div className="flex items-center gap-4 text-white/30 text-xs font-['Plus_Jakarta_Sans']">
+              <span>© {new Date().getFullYear()} MerchDrop</span>
+              <Link href="/integritetspolicy" className="hover:text-purple-400 transition-colors">
+                Integritetspolicy
+              </Link>
+              <span>
                 Byggt av{" "}
                 <a
                   href="https://conversify.io"
@@ -693,7 +686,7 @@ export default function Home() {
                 >
                   Conversify.io
                 </a>
-              </p>
+              </span>
             </div>
           </div>
         </div>
