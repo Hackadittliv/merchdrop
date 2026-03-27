@@ -27,3 +27,4 @@
 - [x] Implement /api/cron/followup-emails endpoint that queries leads due for follow-up
 - [x] Register lead in DB on form submission
 - [x] Write tests for follow-up email logic
+- [x] Set MerchDrop logo as browser favicon
