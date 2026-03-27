@@ -46,3 +46,4 @@
 - [x] Fix FAQ accordion: wrap in <section> with itemscope/itemtype for AEO
 - [ ] Add 404 page Swedish translation and brand consistency
 - [x] Expand llms.txt with pricing model, use cases and competitive positioning
+- [x] Logo in navbar scrolls to top of page on click

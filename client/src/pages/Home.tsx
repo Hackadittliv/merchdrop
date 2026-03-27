@@ -425,7 +425,13 @@ export default function Home() {
         style={{ background: scrolled ? "rgba(15,10,30,0.85)" : "transparent" }}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
-          <img src={LOGO_URL} alt="MerchDrop" className="h-10 md:h-12 w-auto" loading="eager" fetchPriority="high" width="200" height="48" />
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Gå till toppen"
+            className="cursor-pointer"
+          >
+            <img src={LOGO_URL} alt="MerchDrop" className="h-10 md:h-12 w-auto" loading="eager" fetchPriority="high" width="200" height="48" />
+          </button>
           <div className="hidden md:flex items-center gap-8">
             {[
               { label: "Hur det fungerar", id: "how-it-works" },
