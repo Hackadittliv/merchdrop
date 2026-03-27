@@ -433,13 +433,6 @@ export default function Home() {
         />
 
         <div className="container relative z-10 text-center py-32 md:py-40">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-8 font-['Plus_Jakarta_Sans']"
-            style={{ background: "rgba(124,58,237,0.2)", border: "1px solid rgba(168,85,247,0.4)", color: "#c084fc" }}
-          >
-            <Zap className="w-4 h-4" />
-            Din egna merch-butik — helt gratis
-          </div>
           <h1 className="font-['Syne'] text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6">
             Din merch.
             <br />
