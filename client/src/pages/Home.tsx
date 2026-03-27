@@ -30,6 +30,7 @@ import {
   CheckCircle2,
   Menu,
   X,
+  ChevronUp,
 } from "lucide-react";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_final_f25cafe4.png";
@@ -186,6 +187,35 @@ function EarningsCalculator() {
 }
 
 // Lead form
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="glass-card rounded-2xl overflow-hidden cursor-pointer reveal"
+      onClick={() => setOpen(!open)}
+    >
+      <div className="flex items-center justify-between p-6 gap-4">
+        <h3 className="font-['Syne'] text-white font-semibold text-lg leading-snug">{question}</h3>
+        <span
+          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
+          style={{ background: open ? "linear-gradient(135deg, #7c3aed, #ec4899)" : "rgba(255,255,255,0.08)" }}
+        >
+          {open ? (
+            <ChevronUp className="w-4 h-4 text-white" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-white/60" />
+          )}
+        </span>
+      </div>
+      {open && (
+        <div className="px-6 pb-6">
+          <p className="text-muted-foreground font-['Plus_Jakarta_Sans'] leading-relaxed">{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function LeadForm() {
   const [form, setForm] = useState({
     name: "",
@@ -668,6 +698,53 @@ export default function Home() {
         />
         <div className="container relative z-10">
           <EarningsCalculator />
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 relative">
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{ background: "radial-gradient(ellipse at 50% 50%, #7c3aed, transparent 70%)" }}
+        />
+        <div className="container relative z-10">
+          <div className="text-center mb-12 reveal">
+            <p className="text-purple-400 font-semibold uppercase tracking-widest text-sm mb-4 font-['Plus_Jakarta_Sans']">
+              Vanliga frågor
+            </p>
+            <h2 className="font-['Syne'] text-4xl md:text-5xl font-bold text-white mb-4">
+              Har du frågor?
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto font-['Plus_Jakarta_Sans']">
+              Här svarar vi på det du undrar
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto space-y-3">
+            {[
+              {
+                q: "Hur lång tid tar det att sätta upp min butik?",
+                a: "Vi sätter upp din personliga merch-butik inom 48 timmar efter att du har skickat in din ansökan. Du får en bekräftelse via e-post med din unika butikslänk när allt är klart.",
+              },
+              {
+                q: "Hur och när får jag min provision?",
+                a: "Du får 30% av varje försäljning. Utbetalning sker månadsvis direkt till ditt bankkonto eller via Swish. Minsta utbetalningsbelopp är 200 kr.",
+              },
+              {
+                q: "Kan jag välja vilka produkter jag vill sälja?",
+                a: "Absolut! Du väljer själv vilka produkter du vill ha i din butik - t-shirts, hoodies, kepsar, nyckelringar, mobilskal eller en kombination. Vi hjälper dig att välja det som passar din publik bäst.",
+              },
+              {
+                q: "Behöver jag ha en design eller logotyp?",
+                a: "Det är en fördel men inget krav. Om du har en logotyp eller design laddar du upp den och vi sätter på produkterna. Har du ingen design kan vi hjälpa dig att skapa något enkelt - hör av dig så pratar vi.",
+              },
+              {
+                q: "Vad kostar det att komma igång?",
+                a: "Ingenting. Det är helt gratis att starta din butik. Vi tjänar pengar när du tjänar pengar - vi tar 70% av varje försäljning för att täcka produktion, frakt och kundservice. Inga dolda avgifter.",
+              },
+            ].map((item, i) => (
+              <FaqItem key={i} question={item.q} answer={item.a} />
+            ))}
+          </div>
         </div>
       </section>
 

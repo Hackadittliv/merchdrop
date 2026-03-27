@@ -13,4 +13,5 @@
 - [x] Add GDPR privacy policy page with footer link
 - [x] Add GDPR consent checkbox to lead form
 - [x] Add owner notifications when new lead submits form
+- [x] Add FAQ accordion section above lead form
 - [ ] Publish and connect merchdrop.se domain
