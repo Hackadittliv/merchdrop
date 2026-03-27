@@ -30,7 +30,7 @@ import {
   X,
 } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_7de8ccf9.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_final_f25cafe4.png";
 const HERO_BG_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/hero_bg-LrPNkhkGDtVxChzPeafo8J.webp";
 const PRODUCTS_IMG_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/products_mockup-o5Tr3oejVRpHHmdtnhwFWE.webp";
 const CREATOR_IMG_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/creator_hero-AexKffkpST8fiJqSJf9tor.webp";
