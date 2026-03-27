@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 import {
   ShoppingBag,
   Zap,
@@ -194,17 +195,33 @@ function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const subscribeMutation = trpc.leads.subscribe.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Tack! Vi hör av oss inom 24 timmar 🎉");
+    },
+    onError: (err) => {
+      toast.error("Något gick fel. Försök igen eller kontakta oss direkt.");
+      console.error("[Lead form error]", err);
+    },
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.channel) {
       toast.error("Fyll i alla obligatoriska fält");
       return;
     }
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
-    toast.success("Tack! Vi hör av oss inom 24 timmar 🎉");
+    const nameParts = form.name.trim().split(" ");
+    const first_name = nameParts[0];
+    const last_name = nameParts.slice(1).join(" ") || undefined;
+    subscribeMutation.mutate({
+      email: form.email,
+      first_name,
+      last_name,
+      channel: form.channel,
+      description: form.description,
+    });
   };
 
   if (submitted) {
@@ -274,10 +291,10 @@ function LeadForm() {
       </div>
       <Button
         type="submit"
-        disabled={loading}
+        disabled={subscribeMutation.isPending}
         className="w-full h-14 text-lg font-bold font-['Syne'] btn-gradient rounded-xl"
       >
-        {loading ? (
+        {subscribeMutation.isPending ? (
           <span className="flex items-center gap-2">
             <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             Skickar...
