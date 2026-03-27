@@ -9,4 +9,5 @@ export const ENV = {
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   hdlApiKey: process.env.HDL_API_KEY ?? "",
   resendApiKey: process.env.RESEND_API_KEY ?? "",
+  cronSecret: process.env.CRON_SECRET ?? "",
 };

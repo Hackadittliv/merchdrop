@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, eq, isNull, lt } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertMerchdropLead, InsertUser, merchdropLeads, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -90,3 +90,65 @@ export async function getUserByOpenId(openId: string) {
 }
 
 // TODO: add feature queries here as your schema grows.
+
+/** Upsert a MerchDrop lead (insert or update on duplicate email) */
+export async function upsertLead(lead: InsertMerchdropLead): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot upsert lead: database not available");
+    return;
+  }
+  await db
+    .insert(merchdropLeads)
+    .values(lead)
+    .onDuplicateKeyUpdate({
+      set: {
+        firstName: lead.firstName,
+        lastName: lead.lastName,
+        channel: lead.channel,
+        description: lead.description,
+      },
+    });
+}
+
+/** Mark confirmation email as sent for a lead */
+export async function markConfirmationSent(email: string): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db
+    .update(merchdropLeads)
+    .set({ confirmationSentAt: new Date() })
+    .where(eq(merchdropLeads.email, email));
+}
+
+/** Mark follow-up email as sent for a lead */
+export async function markFollowupSent(email: string): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db
+    .update(merchdropLeads)
+    .set({ followupSentAt: new Date() })
+    .where(eq(merchdropLeads.email, email));
+}
+
+/**
+ * Returns leads that:
+ * - Submitted >= 48 hours ago
+ * - Have NOT yet received a follow-up email
+ * - Have NOT been marked as contacted
+ */
+export async function getLeadsDueForFollowup() {
+  const db = await getDb();
+  if (!db) return [];
+  const cutoff = new Date(Date.now() - 48 * 60 * 60 * 1000);
+  return db
+    .select()
+    .from(merchdropLeads)
+    .where(
+      and(
+        lt(merchdropLeads.submittedAt, cutoff),
+        isNull(merchdropLeads.followupSentAt),
+        eq(merchdropLeads.isContacted, 0)
+      )
+    );
+}

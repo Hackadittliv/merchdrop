@@ -8,6 +8,13 @@
       "when": 1774641066395,
       "tag": "0000_colorful_the_twelve",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1774648381211,
+      "tag": "0001_fair_molten_man",
+      "breakpoints": true
     }
   ]
 }

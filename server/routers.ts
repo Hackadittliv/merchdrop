@@ -6,6 +6,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { ENV } from "./_core/env";
 import { z } from "zod";
 import { sendLeadConfirmationEmail } from "./email";
+import { markConfirmationSent, upsertLead } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -70,10 +71,25 @@ export const appRouter = router({
           content: `E-post: ${input.email}${channel}${desc}`,
         });
 
+        // Persist lead in DB for follow-up email tracking (best-effort)
+        upsertLead({
+          email: input.email,
+          firstName: input.first_name,
+          lastName: input.last_name,
+          channel: input.channel,
+          description: input.description,
+        }).catch((err) => console.error("[DB] Failed to upsert lead:", err));
+
         // Send confirmation email to the lead (best-effort, non-blocking)
         sendLeadConfirmationEmail({
           toEmail: input.email,
           firstName: input.first_name ?? name,
+        }).then((sent) => {
+          if (sent) {
+            markConfirmationSent(input.email).catch((err) =>
+              console.error("[DB] Failed to mark confirmation sent:", err)
+            );
+          }
         }).catch((err) => console.error("[Email] Unexpected error:", err));
 
         return { success: true, isNewLead: isNew };

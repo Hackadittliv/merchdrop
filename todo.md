@@ -22,3 +22,8 @@
 - [x] Build dedicated confirmation/thank-you page at /tack
 - [x] Send confirmation email to lead after form submission
 - [x] Redirect lead form to /tack page after successful submission
+- [x] Create leads DB table to track email state (submitted_at, followup_sent_at)
+- [x] Build follow-up email HTML template (dag 2-3 reminder)
+- [x] Implement /api/cron/followup-emails endpoint that queries leads due for follow-up
+- [x] Register lead in DB on form submission
+- [x] Write tests for follow-up email logic

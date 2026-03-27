@@ -26,3 +26,27 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
 // TODO: Add your tables here
+
+/**
+ * Tracks MerchDrop leads and their email communication state.
+ * Used to schedule and record follow-up emails.
+ */
+export const merchdropLeads = mysqlTable("merchdrop_leads", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  firstName: varchar("firstName", { length: 128 }),
+  lastName: varchar("lastName", { length: 128 }),
+  channel: text("channel"),
+  description: text("description"),
+  /** Timestamp when the lead submitted the form */
+  submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+  /** Timestamp when the confirmation email was sent (null = not yet sent) */
+  confirmationSentAt: timestamp("confirmationSentAt"),
+  /** Timestamp when the follow-up email was sent (null = not yet sent) */
+  followupSentAt: timestamp("followupSentAt"),
+  /** Whether the lead has been marked as contacted/handled by the team */
+  isContacted: int("isContacted").default(0).notNull(),
+});
+
+export type MerchdropLead = typeof merchdropLeads.$inferSelect;
+export type InsertMerchdropLead = typeof merchdropLeads.$inferInsert;
