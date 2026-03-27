@@ -17,4 +17,5 @@
 - [x] Update FAQ and product section with broader product range
 - [x] Make social media link mandatory in form
 - [x] Add FOMO elements around setup time and exclusivity
+- [x] Add social platforms band below hero section
 - [ ] Publish and connect merchdrop.se domain
