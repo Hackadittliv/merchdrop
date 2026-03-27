@@ -18,4 +18,12 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://merchdrop.se/tack" />
   </url>
 
+  <url>
+    <loc>https://merchdrop.se/integritetspolicy</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://merchdrop.se/integritetspolicy" />
+  </url>
+
 </urlset>

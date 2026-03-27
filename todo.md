@@ -32,3 +32,17 @@
 - [x] Add Open Graph, Twitter Card, canonical and structured data (JSON-LD) meta tags
 - [x] Create robots.txt and sitemap.xml
 - [x] Create llms.txt for AIO/GEO crawlers
+
+## SEO/AIO/GEO/AEO Audit Fixes
+- [x] Fix ThankYou.tsx broken Swedish characters (ar → är, ansokan → ansökan, etc.)
+- [x] Add per-route document.title + meta description updates for /tack and /integritetspolicy
+- [x] Add /integritetspolicy to sitemap.xml (with noindex meta on the page itself)
+- [x] Add HowTo JSON-LD schema for the 4-step process section
+- [x] Add Speakable schema for hero and FAQ sections (AEO/voice search)
+- [x] Add aria-labels and role=region to all major page sections
+- [x] Add lazy loading + explicit width/height to below-fold images
+- [x] Add font-display:swap to Google Fonts URL for CWV
+- [x] Add preload hint for hero background image
+- [x] Fix FAQ accordion: wrap in <section> with itemscope/itemtype for AEO
+- [ ] Add 404 page Swedish translation and brand consistency
+- [x] Expand llms.txt with pricing model, use cases and competitive positioning

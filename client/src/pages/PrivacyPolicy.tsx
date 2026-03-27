@@ -3,6 +3,7 @@
   GDPR-kompatibel sida som informerar om personuppgiftshantering
 */
 
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
@@ -10,6 +11,23 @@ const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_final_f25cafe4.png";
 
 export default function PrivacyPolicy() {
+  useEffect(() => {
+    document.title = "Integritetspolicy — MerchDrop";
+    // Noindex: privacy policy should not appear in search results
+    let noindex = document.querySelector('meta[name="robots"][data-route]');
+    if (!noindex) {
+      noindex = document.createElement("meta");
+      noindex.setAttribute("name", "robots");
+      noindex.setAttribute("data-route", "privacy");
+      document.head.appendChild(noindex);
+    }
+    noindex.setAttribute("content", "noindex, follow");
+    return () => {
+      document.title = "MerchDrop — Din egna merch-butik | Gratis att starta";
+      noindex?.setAttribute("content", "index, follow, max-snippet:-1, max-image-preview:large");
+    };
+  }, []);
+
   return (
     <div
       className="min-h-screen text-foreground overflow-x-hidden"

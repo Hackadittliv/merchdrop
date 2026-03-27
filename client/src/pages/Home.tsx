@@ -425,7 +425,7 @@ export default function Home() {
         style={{ background: scrolled ? "rgba(15,10,30,0.85)" : "transparent" }}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
-          <img src={LOGO_URL} alt="MerchDrop" className="h-10 md:h-12 w-auto" />
+          <img src={LOGO_URL} alt="MerchDrop" className="h-10 md:h-12 w-auto" loading="eager" fetchPriority="high" width="200" height="48" />
           <div className="hidden md:flex items-center gap-8">
             {[
               { label: "Hur det fungerar", id: "how-it-works" },
@@ -604,7 +604,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-24 relative overflow-hidden">
+      <section id="how-it-works" aria-label="Hur MerchDrop fungerar" className="py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
           style={{ background: "radial-gradient(ellipse at 50% 50%, #7c3aed, transparent 70%)" }}
@@ -647,7 +647,7 @@ export default function Home() {
       </section>
 
       {/* Creator + Products Split Section */}
-      <section id="products" className="py-24">
+      <section id="products" aria-label="Produkter och fördelar med MerchDrop" className="py-24">
         <div className="container">
           {/* Creator image + text */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
@@ -682,8 +682,11 @@ export default function Home() {
               <div className="relative rounded-3xl overflow-hidden" style={{ boxShadow: "0 0 60px rgba(124,58,237,0.3)" }}>
                 <img
                   src={CREATOR_IMG_URL}
-                  alt="Creator med merch"
+                  alt="Creator som visar upp sin personliga merch från MerchDrop"
                   className="w-full h-auto object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,10,30,0.6) 0%, transparent 50%)" }} />
               </div>
@@ -722,15 +725,18 @@ export default function Home() {
           <div className="reveal rounded-3xl overflow-hidden" style={{ boxShadow: "0 0 80px rgba(236,72,153,0.2)" }}>
             <img
               src={PRODUCTS_IMG_URL}
-              alt="MerchDrop produkter"
+              alt="MerchDrop produkter — t-shirts, hoodies, kepsar och mobilskal"
               className="w-full h-64 md:h-96 object-cover"
+              loading="lazy"
+              width="1200"
+              height="400"
             />
           </div>
         </div>
       </section>
 
       {/* Earnings Calculator */}
-      <section id="calculator" className="py-24 relative">
+      <section id="calculator" aria-label="Intäktskalkylator" className="py-24 relative">
         <div
           className="absolute inset-0 opacity-5"
           style={{ background: "radial-gradient(ellipse at 50% 50%, #ec4899, transparent 70%)" }}
@@ -741,7 +747,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 relative">
+      <section id="faq" aria-label="Vanliga frågor om MerchDrop" className="py-24 relative">
         <div
           className="absolute inset-0 opacity-5"
           style={{ background: "radial-gradient(ellipse at 50% 50%, #7c3aed, transparent 70%)" }}
@@ -788,7 +794,7 @@ export default function Home() {
       </section>
 
       {/* Lead Form / Sign Up */}
-      <section id="signup" className="py-24">
+      <section id="signup" aria-label="Anmäl dig till MerchDrop" className="py-24">
         <div className="container">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12 reveal">
@@ -823,7 +829,7 @@ export default function Home() {
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <img src={LOGO_URL} alt="MerchDrop" className="h-7 w-auto" />
+              <img src={LOGO_URL} alt="MerchDrop" className="h-8 w-auto" loading="lazy" width="160" height="32" />
               <span className="text-white/30 text-xs font-['Plus_Jakarta_Sans']">
                 Din merch. Dina regler. Vårt jobb.
               </span>

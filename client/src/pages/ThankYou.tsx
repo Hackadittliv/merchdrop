@@ -56,11 +56,20 @@ export default function ThankYou() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Per-route SEO: update title and meta description
+    document.title = "Tack för din ansökan! — MerchDrop";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", "Vi har tagit emot din ansökan och hör av oss inom 48 timmar för att sätta upp din personliga merch-butik.");
     // Scroll to top on mount
     window.scrollTo({ top: 0, behavior: "instant" });
     // Trigger entrance animation
     const t = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(t);
+    return () => {
+      clearTimeout(t);
+      // Restore homepage title on unmount
+      document.title = "MerchDrop — Din egna merch-butik | Gratis att starta";
+      if (metaDesc) metaDesc.setAttribute("content", "Starta din personliga merch-butik gratis. MerchDrop hanterar produktion, tryck och frakt — du delar länken och tjänar 30% på varje försäljning.");
+    };
   }, []);
 
   const steps = [
@@ -133,7 +142,7 @@ export default function ThankYou() {
 
           {/* Headline */}
           <h1 className="font-['Syne'] text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Du ar med pa listan!{" "}
+            Du är med på listan!{" "}
             <span
               className="inline-block"
               style={{
@@ -148,8 +157,8 @@ export default function ThankYou() {
           </h1>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto mb-6 font-['Plus_Jakarta_Sans'] leading-relaxed">
-            Vi har tagit emot din ansokan och hor av oss inom{" "}
-            <span className="text-white font-bold">48 timmar</span> for att satta upp din personliga merch-butik.
+            Vi har tagit emot din ansökan och hör av oss inom{" "}
+            <span className="text-white font-bold">48 timmar</span> för att sätta upp din personliga merch-butik.
           </p>
 
           {/* Email reminder pill */}
@@ -162,13 +171,13 @@ export default function ThankYou() {
             }}
           >
             <Mail className="w-4 h-4" />
-            Kolla din e-post - vi har skickat en bekraftelse
+            Kolla din e-post — vi har skickat en bekräftelse
           </div>
 
           {/* Next steps */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="font-['Syne'] text-2xl md:text-3xl font-bold text-white mb-10">
-              Vad hander nu?
+              Vad händer nu?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, i) => (
@@ -256,7 +265,7 @@ export default function ThankYou() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30 font-['Plus_Jakarta_Sans']">
             <div className="flex items-center gap-3">
               <img src={LOGO_URL} alt="MerchDrop" className="h-6 w-auto opacity-60" />
-              <span>© {new Date().getFullYear()} MerchDrop. Alla rattigheter forbehallna.</span>
+              <span>© {new Date().getFullYear()} MerchDrop. Alla rättigheter förbehållna.</span>
             </div>
             <div className="flex items-center gap-4">
               <Link href="/integritetspolicy" className="hover:text-white/60 transition-colors">

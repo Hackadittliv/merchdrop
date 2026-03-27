@@ -186,16 +186,71 @@
               }
             }
           ]
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://merchdrop.se/#howto",
+          "name": "Hur startar man en merch-butik med MerchDrop?",
+          "description": "S\u00e5 h\u00e4r startar du din personliga merch-butik med MerchDrop p\u00e5 under 48 timmar.",
+          "totalTime": "PT2M",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "SEK",
+            "value": "0"
+          },
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Anm\u00e4l dig",
+              "text": "Fyll i anm\u00e4lningsformul\u00e4ret p\u00e5 merchdrop.se. Det tar 2 minuter och \u00e4r helt gratis.",
+              "url": "https://merchdrop.se/#signup"
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Vi s\u00e4tter upp din butik",
+              "text": "V\u00e5rt team skapar din personliga merch-butik med ditt namn och din design inom 48 timmar."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Dela med dina fans",
+              "text": "Du f\u00e5r en unik l\u00e4nk som du delar i bio, stories eller var du vill."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 4,
+              "name": "Tj\u00e4na pengar",
+              "text": "MerchDrop hanterar produktion, frakt och kundservice. Du f\u00e5r 30% av varje order."
+            }
+          ]
+        },
+        {
+          "@type": "SpeakableSpecification",
+          "@id": "https://merchdrop.se/#speakable",
+          "cssSelector": ["h1", "#faq", "#how-it-works h2"]
         }
       ]
     }
     </script>
 
     <!-- ═══════════════════════════════════════════
+         PERFORMANCE — LCP PRELOAD
+    ═══════════════════════════════════════════ -->
+    <!-- Preload hero background (LCP candidate) -->
+    <link rel="preload" as="image" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/hero_bg-LrPNkhkGDtVxChzPeafo8J.webp" type="image/webp" />
+    <!-- Preload MerchDrop logo (above-the-fold) -->
+    <link rel="preload" as="image" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_final_f25cafe4.png" type="image/png" />
+    <!-- DNS prefetch for CDN -->
+    <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
+
+    <!-- ═══════════════════════════════════════════
          FONTS
     ═══════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- display=swap already set in the URL below for font-display:swap CWV benefit -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   </head>
   <body>
