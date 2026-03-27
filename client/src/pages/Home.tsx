@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
+import { Link } from "wouter";
 import {
   ShoppingBag,
   Zap,
@@ -676,6 +677,11 @@ export default function Home() {
                 Drivet av ett{" "}
                 <span className="text-purple-400">svenskt tryckeri</span>{" "}
                 med lång erfarenhet.
+              </p>
+              <p className="mt-1">
+                <Link href="/integritetspolicy" className="text-white/40 hover:text-purple-400 transition-colors">
+                  Integritetspolicy
+                </Link>
               </p>
               <p className="mt-2">
                 Byggt av{" "}
