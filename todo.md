@@ -11,5 +11,6 @@
 - [x] Build leads.subscribe tRPC proxy route to Hackadittliv API
 - [x] Connect lead form to tRPC mutation
 - [x] Add GDPR privacy policy page with footer link
-- [ ] Add owner notifications when new lead submits form
+- [x] Add GDPR consent checkbox to lead form
+- [x] Add owner notifications when new lead submits form
 - [ ] Publish and connect merchdrop.se domain

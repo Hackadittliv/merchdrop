@@ -195,6 +195,7 @@ function LeadForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [gdprConsent, setGdprConsent] = useState(false);
 
   const subscribeMutation = trpc.leads.subscribe.useMutation({
     onSuccess: () => {
@@ -211,6 +212,10 @@ function LeadForm() {
     e.preventDefault();
     if (!form.name || !form.email || !form.channel) {
       toast.error("Fyll i alla obligatoriska fält");
+      return;
+    }
+    if (!gdprConsent) {
+      toast.error("Du måste godkänna integritetspolicyn för att fortsätta");
       return;
     }
     const nameParts = form.name.trim().split(" ");
@@ -290,10 +295,38 @@ function LeadForm() {
           className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-purple-500 resize-none"
         />
       </div>
+      {/* GDPR Consent */}
+      <div className="flex items-start gap-3">
+        <button
+          type="button"
+          role="checkbox"
+          aria-checked={gdprConsent}
+          onClick={() => setGdprConsent(!gdprConsent)}
+          className={`mt-0.5 w-5 h-5 rounded flex-shrink-0 flex items-center justify-center border transition-all ${
+            gdprConsent
+              ? "border-purple-500 bg-purple-500"
+              : "border-white/20 bg-white/5 hover:border-purple-400"
+          }`}
+        >
+          {gdprConsent && (
+            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+            </svg>
+          )}
+        </button>
+        <span className="text-white/50 text-sm font-['Plus_Jakarta_Sans'] leading-relaxed">
+          Jag godkänner att MerchDrop behandlar mina personuppgifter enligt{" "}
+          <Link href="/integritetspolicy" className="text-purple-400 hover:text-pink-400 transition-colors underline underline-offset-2">
+            integritetspolicyn
+          </Link>
+          . <span className="text-pink-400">*</span>
+        </span>
+      </div>
+
       <Button
         type="submit"
-        disabled={subscribeMutation.isPending}
-        className="w-full h-14 text-lg font-bold font-['Syne'] btn-gradient rounded-xl"
+        disabled={subscribeMutation.isPending || !gdprConsent}
+        className="w-full h-14 text-lg font-bold font-['Syne'] btn-gradient rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {subscribeMutation.isPending ? (
           <span className="flex items-center gap-2">

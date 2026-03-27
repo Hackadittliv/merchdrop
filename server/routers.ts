@@ -1,5 +1,6 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
+import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { ENV } from "./_core/env";
@@ -57,7 +58,18 @@ export const appRouter = router({
         }
 
         const data = await response.json();
-        return { success: true, isNewLead: data.isNewLead ?? true };
+
+        // Notify owner about new lead
+        const isNew = data.isNewLead ?? true;
+        const name = [input.first_name, input.last_name].filter(Boolean).join(" ") || "Okänt namn";
+        const channel = input.channel ? ` | Kanal: ${input.channel}` : "";
+        const desc = input.description ? `\n\nOm sig själv: ${input.description}` : "";
+        await notifyOwner({
+          title: isNew ? `🎉 Ny MerchDrop-lead: ${name}` : `🔄 Återkommande lead: ${name}`,
+          content: `E-post: ${input.email}${channel}${desc}`,
+        });
+
+        return { success: true, isNewLead: isNew };
       }),
   }),
 });
