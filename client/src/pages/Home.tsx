@@ -84,14 +84,14 @@ function StatsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const creators = useCountUp(500, 2000, visible);
-  const products = useCountUp(30, 1500, visible);
+  const hours = useCountUp(48, 1500, visible);
+  const products = useCountUp(100, 1500, visible);
   const commission = useCountUp(30, 1000, visible);
 
   return (
     <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8 py-16">
       {[
-        { value: creators, suffix: "+", label: "Aktiva creators", icon: <Star className="w-6 h-6" /> },
+        { value: "100", suffix: "%", label: "Gratis att starta", icon: <Star className="w-6 h-6" /> },
         { value: products, suffix: "+", label: "Produkter att välja", icon: <Package className="w-6 h-6" /> },
         { value: commission, suffix: "%", label: "Provision till dig", icon: <TrendingUp className="w-6 h-6" /> },
       ].map((stat, i) => (
