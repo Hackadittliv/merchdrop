@@ -660,6 +660,17 @@ export default function Home() {
                 <span className="text-purple-400">svenskt tryckeri</span>{" "}
                 med lång erfarenhet.
               </p>
+              <p className="mt-2">
+                Byggt av{" "}
+                <a
+                  href="https://conversify.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:text-pink-400 transition-colors"
+                >
+                  Conversify.io
+                </a>
+              </p>
             </div>
           </div>
         </div>
