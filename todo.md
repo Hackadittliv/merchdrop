@@ -51,3 +51,5 @@
 - [x] Integrate cookie banner into App.tsx
 - [x] Integrate Meta Pixel 926945980052624 with GDPR consent gating
 - [x] Fire Lead event on form submission (consent required)
+- [x] Trim meta keywords to max 8 focused terms
+- [x] Shorten meta description to max 160 characters
