@@ -47,3 +47,5 @@
 - [ ] Add 404 page Swedish translation and brand consistency
 - [x] Expand llms.txt with pricing model, use cases and competitive positioning
 - [x] Logo in navbar scrolls to top of page on click
+- [x] Build GDPR cookie consent banner component
+- [x] Integrate cookie banner into App.tsx
