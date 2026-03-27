@@ -19,3 +19,6 @@
 - [x] Add FOMO elements around setup time and exclusivity
 - [x] Add social platforms band below hero section
 - [ ] Publish and connect merchdrop.se domain
+- [x] Build dedicated confirmation/thank-you page at /tack
+- [x] Send confirmation email to lead after form submission
+- [x] Redirect lead form to /tack page after successful submission

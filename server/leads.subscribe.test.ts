@@ -24,6 +24,11 @@ describe("leads.subscribe", () => {
       ok: true,
       json: async () => ({ success: true, message: "Tack!", isNewLead: true }),
     });
+    // Mock notifyOwner call (second fetch)
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({}),
+    });
 
     const caller = appRouter.createCaller(createPublicContext());
     const result = await caller.leads.subscribe({
@@ -36,8 +41,9 @@ describe("leads.subscribe", () => {
     expect(result.success).toBe(true);
     expect(result.isNewLead).toBe(true);
 
-    // Verify the API was called with correct payload
-    expect(mockFetch).toHaveBeenCalledOnce();
+    // Verify the HDL API was called with correct payload (first call)
+    // Note: mockFetch is called twice - once for HDL API, once for notifyOwner
+    expect(mockFetch).toHaveBeenCalledTimes(2);
     const [url, options] = mockFetch.mock.calls[0];
     expect(url).toBe("https://fcgjhzccucyyrpgggjwj.supabase.co/functions/v1/subscribe-lead");
     const body = JSON.parse(options.body);

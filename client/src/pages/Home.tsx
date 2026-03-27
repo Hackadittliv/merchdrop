@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   ShoppingBag,
   Zap,
@@ -223,14 +223,12 @@ function LeadForm() {
     channel: "",
     description: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [gdprConsent, setGdprConsent] = useState(false);
+  const [, navigate] = useLocation();
 
   const subscribeMutation = trpc.leads.subscribe.useMutation({
     onSuccess: () => {
-      setSubmitted(true);
-      toast.success("Tack! Vi hör av oss inom 24 timmar 🎉");
+      navigate("/tack");
     },
     onError: (err) => {
       toast.error("Något gick fel. Försök igen eller kontakta oss direkt.");
@@ -259,21 +257,6 @@ function LeadForm() {
       description: form.description,
     });
   };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-16 reveal">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 animate-pulse-glow"
-          style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}>
-          <CheckCircle2 className="w-10 h-10 text-white" />
-        </div>
-        <h3 className="font-['Syne'] text-3xl font-bold text-white mb-4">Du är med på listan! 🚀</h3>
-        <p className="text-muted-foreground text-lg max-w-md mx-auto">
-          Vi har tagit emot din ansökan och hör av oss inom 24 timmar för att sätta upp din butik.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
