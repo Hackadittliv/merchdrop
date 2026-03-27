@@ -14,4 +14,7 @@
 - [x] Add GDPR consent checkbox to lead form
 - [x] Add owner notifications when new lead submits form
 - [x] Add FAQ accordion section above lead form
+- [x] Update FAQ and product section with broader product range
+- [x] Make social media link mandatory in form
+- [x] Add FOMO elements around setup time and exclusivity
 - [ ] Publish and connect merchdrop.se domain

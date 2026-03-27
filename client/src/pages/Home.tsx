@@ -304,7 +304,7 @@ function LeadForm() {
       </div>
       <div>
         <Label className="text-white font-semibold mb-2 block font-['Plus_Jakarta_Sans']">
-          Din kanal / länk (Instagram, YouTube, TikTok, etc.) <span className="text-pink-400">*</span>
+          Din sociala medie-länk (Instagram, TikTok, YouTube, etc.) <span className="text-pink-400">*</span>
         </Label>
         <Input
           value={form.channel}
@@ -399,7 +399,10 @@ export default function Home() {
     { icon: <HardHat className="w-8 h-8" />, name: "Kepsar", desc: "Snapbacks och dad hats med brodyr eller tryck", color: "from-orange-500 to-yellow-500" },
     { icon: <Key className="w-8 h-8" />, name: "Nyckelringar", desc: "Personliga nyckelringar som fans älskar", color: "from-yellow-500 to-green-500" },
     { icon: <Smartphone className="w-8 h-8" />, name: "Mobilskal", desc: "Skyddande skal för de populäraste modellerna", color: "from-green-500 to-teal-500" },
-    { icon: <ShoppingBag className="w-8 h-8" />, name: "Mer på väg", desc: "Vi utökar sortimentet hela tiden", color: "from-teal-500 to-purple-500" },
+    { icon: <ShoppingBag className="w-8 h-8" />, name: "Muggar & Flaskor", desc: "Kaffemuggar, termosflaskor och dricksglas", color: "from-teal-500 to-blue-500" },
+    { icon: <Package className="w-8 h-8" />, name: "Tygkassar", desc: "Hållbara tote bags och shoppingkassar", color: "from-blue-500 to-purple-500" },
+    { icon: <Shirt className="w-8 h-8" />, name: "Affischer & Prints", desc: "Högkvalitativa prints i alla format", color: "from-purple-500 to-orange-500" },
+    { icon: <ShoppingBag className="w-8 h-8" />, name: "Och mycket mer", desc: "Kan vi trycka på det - kan du sälja det", color: "from-orange-500 to-pink-500" },
   ];
 
   const steps = [
@@ -723,7 +726,7 @@ export default function Home() {
             {[
               {
                 q: "Hur lång tid tar det att sätta upp min butik?",
-                a: "Vi sätter upp din personliga merch-butik inom 48 timmar efter att du har skickat in din ansökan. Du får en bekräftelse via e-post med din unika butikslänk när allt är klart.",
+                a: "Vi sätter upp din personliga merch-butik inom 48 timmar efter att du skickat in din ansökan - förutsatt att vi får in alla uppgifter. Vi jobbar med ett begränsat antal creators åt gången för att säkerställa kvaliteten, så ju snabbare du anmäler dig desto snabbare får du din plats.",
               },
               {
                 q: "Hur och när får jag min provision?",
@@ -731,7 +734,7 @@ export default function Home() {
               },
               {
                 q: "Kan jag välja vilka produkter jag vill sälja?",
-                a: "Absolut! Du väljer själv vilka produkter du vill ha i din butik - t-shirts, hoodies, kepsar, nyckelringar, mobilskal eller en kombination. Vi hjälper dig att välja det som passar din publik bäst.",
+                a: "Absolut! Vi erbjuder ett enormt sortiment - t-shirts, hoodies, kepsar, nyckelringar, mobilskal, muggar, tygkassar, affischer och mycket mer. Kan vi trycka på det, kan du sälja det. Vi hjälper dig att välja rätt mix för just din publik.",
               },
               {
                 q: "Behöver jag ha en design eller logotyp?",
@@ -753,6 +756,12 @@ export default function Home() {
         <div className="container">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12 reveal">
+              {/* FOMO badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-semibold font-['Plus_Jakarta_Sans']"
+                style={{ background: "linear-gradient(135deg, rgba(239,68,68,0.15), rgba(249,115,22,0.15))", border: "1px solid rgba(239,68,68,0.3)" }}>
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-red-400">Vi tar just nu emot nya creators - begränsat antal platser</span>
+              </div>
               <p className="text-orange-400 font-semibold uppercase tracking-widest text-sm mb-4 font-['Plus_Jakarta_Sans']">
                 Redo att sätta igång?
               </p>
@@ -761,7 +770,9 @@ export default function Home() {
                 <span className="gradient-text">idag</span>
               </h2>
               <p className="text-muted-foreground text-lg font-['Plus_Jakarta_Sans']">
-                Fyll i formuläret så hör vi av oss inom 24 timmar för att sätta upp din personliga merch-butik.
+                Fyll i formuläret - vi hör av oss inom{" "}
+                <span className="text-white font-semibold">48 timmar</span>{" "}
+                och din butik är live.
               </p>
             </div>
             <div className="glass-card rounded-3xl p-8 md:p-10 reveal">
