@@ -1,6 +1,6 @@
 import { and, eq, isNull, lt } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertMerchdropLead, InsertUser, merchdropLeads, users } from "../drizzle/schema";
+import { InsertMerchdropDesign, InsertMerchdropLead, InsertUser, merchdropDesigns, merchdropLeads, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -151,4 +151,35 @@ export async function getLeadsDueForFollowup() {
         eq(merchdropLeads.isContacted, 0)
       )
     );
+}
+
+/** Insert a new design record and return its id */
+export async function createDesign(design: InsertMerchdropDesign): Promise<number | null> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot create design: database not available");
+    return null;
+  }
+  const result = await db.insert(merchdropDesigns).values(design);
+  return (result as any).insertId ?? null;
+}
+
+/** Update design URL and mark as done */
+export async function updateDesignUrl(id: number, designUrl: string): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db
+    .update(merchdropDesigns)
+    .set({ designUrl, status: "done" })
+    .where(eq(merchdropDesigns.id, id));
+}
+
+/** Mark design as failed */
+export async function markDesignFailed(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db
+    .update(merchdropDesigns)
+    .set({ status: "failed" })
+    .where(eq(merchdropDesigns.id, id));
 }

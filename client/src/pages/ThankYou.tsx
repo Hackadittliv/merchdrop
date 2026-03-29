@@ -2,12 +2,14 @@
   MerchDrop Thank You / Confirmation Page
   Route: /tack
   Shown after successful lead form submission
+  Includes AI DesignCreator as the main "wow moment"
 */
 
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
-import { CheckCircle2, Mail, Clock, Zap, Star, ArrowRight, ShoppingBag } from "lucide-react";
+import { Link, useSearch } from "wouter";
+import { CheckCircle2, Mail, Clock, Zap, Star, ArrowRight, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DesignCreator } from "@/components/DesignCreator";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663450584758/XErJVV8ZFJdEBccSE4fBzi/merchdrop_logo_final_f25cafe4.png";
@@ -54,19 +56,18 @@ function Confetti() {
 
 export default function ThankYou() {
   const [visible, setVisible] = useState(false);
+  const search = useSearch();
+  const params = new URLSearchParams(search);
+  const email = params.get("email") || "";
 
   useEffect(() => {
-    // Per-route SEO: update title and meta description
     document.title = "Tack för din ansökan! — MerchDrop";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", "Vi har tagit emot din ansökan och hör av oss inom 48 timmar för att sätta upp din personliga merch-butik.");
-    // Scroll to top on mount
     window.scrollTo({ top: 0, behavior: "instant" });
-    // Trigger entrance animation
     const t = setTimeout(() => setVisible(true), 50);
     return () => {
       clearTimeout(t);
-      // Restore homepage title on unmount
       document.title = "MerchDrop — Din egna merch-butik | Gratis att starta";
       if (metaDesc) metaDesc.setAttribute("content", "Starta din personliga merch-butik gratis. MerchDrop hanterar produktion, tryck och frakt — du delar länken och tjänar 30% på varje försäljning.");
     };
@@ -106,8 +107,10 @@ export default function ThankYou() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Minimal nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10"
-        style={{ background: "rgba(15,10,30,0.85)" }}>
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10"
+        style={{ background: "rgba(15,10,30,0.85)" }}
+      >
         <div className="container flex items-center h-16 md:h-20">
           <Link href="/">
             <img src={LOGO_URL} alt="MerchDrop" className="h-10 md:h-12 w-auto cursor-pointer" />
@@ -116,54 +119,42 @@ export default function ThankYou() {
       </nav>
 
       {/* Hero confirmation block */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative overflow-hidden pt-28 pb-16">
         {/* Background glow */}
         <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-15 blur-3xl pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-15 blur-3xl pointer-events-none"
           style={{ background: "radial-gradient(circle, #7c3aed, #ec4899, transparent)" }}
         />
         <Confetti />
 
         <div
-          className={`container relative z-10 text-center py-24 transition-all duration-700 ${
+          className={`container relative z-10 text-center transition-all duration-700 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           {/* Success icon */}
           <div
-            className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-8 mx-auto"
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 mx-auto"
             style={{
               background: "linear-gradient(135deg, #7c3aed, #ec4899)",
               boxShadow: "0 0 60px rgba(124,58,237,0.5)",
             }}
           >
-            <CheckCircle2 className="w-12 h-12 text-white" />
+            <CheckCircle2 className="w-10 h-10 text-white" />
           </div>
 
-          {/* Headline */}
-          <h1 className="font-['Syne'] text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Du är med på listan!{" "}
-            <span
-              className="inline-block"
-              style={{
-                background: "linear-gradient(135deg, #a855f7, #ec4899, #f97316)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              🚀
-            </span>
+          <h1 className="font-['Syne'] text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Du är med på listan! 🚀
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/70 max-w-xl mx-auto mb-6 font-['Plus_Jakarta_Sans'] leading-relaxed">
+          <p className="text-lg md:text-xl text-white/70 max-w-xl mx-auto mb-4 font-['Plus_Jakarta_Sans'] leading-relaxed">
             Vi har tagit emot din ansökan och hör av oss inom{" "}
-            <span className="text-white font-bold">48 timmar</span> för att sätta upp din personliga merch-butik.
+            <span className="text-white font-bold">48 timmar</span>.
           </p>
 
           {/* Email reminder pill */}
           <div
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full mb-16 font-['Plus_Jakarta_Sans'] text-sm font-medium"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full mb-12 font-['Plus_Jakarta_Sans'] text-sm font-medium"
             style={{
               background: "rgba(124,58,237,0.15)",
               border: "1px solid rgba(168,85,247,0.3)",
@@ -173,51 +164,112 @@ export default function ThankYou() {
             <Mail className="w-4 h-4" />
             Kolla din e-post — vi har skickat en bekräftelse
           </div>
+        </div>
+      </section>
 
-          {/* Next steps */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <h2 className="font-['Syne'] text-2xl md:text-3xl font-bold text-white mb-10">
-              Vad händer nu?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, i) => (
+      {/* ── AI DESIGN CREATOR SECTION ── */}
+      <section className="py-8 pb-20 relative">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{ background: "radial-gradient(ellipse at 50% 0%, #7c3aed, transparent 60%)" }}
+        />
+        <div className="container relative z-10 max-w-2xl mx-auto">
+          {/* Divider with label */}
+          <div className="flex items-center gap-4 mb-10">
+            <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
+            <div
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold font-['Syne']"
+              style={{
+                background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(236,72,153,0.3))",
+                border: "1px solid rgba(168,85,247,0.4)",
+                color: "#e879f9",
+              }}
+            >
+              <Sparkles className="w-4 h-4" />
+              Bonus för dig
+            </div>
+            <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
+          </div>
+
+          {/* Design creator card */}
+          <div
+            className="rounded-3xl p-6 md:p-10"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            {email ? (
+              <DesignCreator email={email} />
+            ) : (
+              /* Fallback if no email in URL */
+              <div className="text-center py-8">
+                <Sparkles className="w-10 h-10 mx-auto mb-4" style={{ color: "#a855f7" }} />
+                <h3 className="font-['Syne'] text-xl font-bold text-white mb-2">
+                  Skapa din merch-design
+                </h3>
+                <p className="text-white/50 font-['Plus_Jakarta_Sans'] text-sm mb-6">
+                  Kontakta oss på hej@merchdrop.se så hjälper vi dig skapa en unik design!
+                </p>
+                <a
+                  href="mailto:hej@merchdrop.se"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold font-['Syne'] text-white"
+                  style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}
+                >
+                  Kontakta oss
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* What happens next */}
+      <section className="py-16 relative">
+        <div className="container max-w-4xl mx-auto">
+          <h2 className="font-['Syne'] text-2xl md:text-3xl font-bold text-white mb-10 text-center">
+            Vad händer nu?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {steps.map((step, i) => (
+              <div
+                key={i}
+                className="text-left rounded-2xl p-6 transition-all duration-700"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  transitionDelay: step.delay,
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(20px)",
+                }}
+              >
                 <div
-                  key={i}
-                  className="text-left rounded-2xl p-6 transition-all duration-700"
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-gradient-to-br ${step.color}`}
+                >
+                  <span className="text-white">{step.icon}</span>
+                </div>
+                <div
+                  className="font-['Space_Mono'] text-3xl font-bold mb-2 opacity-30"
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    transitionDelay: step.delay,
-                    opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(20px)",
+                    background: "linear-gradient(135deg, #a855f7, #ec4899)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
                   }}
                 >
-                  <div
-                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-gradient-to-br ${step.color}`}
-                  >
-                    <span className="text-white">{step.icon}</span>
-                  </div>
-                  <div
-                    className="font-['Space_Mono'] text-3xl font-bold mb-2 opacity-30"
-                    style={{
-                      background: "linear-gradient(135deg, #a855f7, #ec4899)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
-                    0{i + 1}
-                  </div>
-                  <h3 className="font-['Syne'] text-lg font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-white/50 font-['Plus_Jakarta_Sans'] text-sm leading-relaxed">{step.desc}</p>
+                  0{i + 1}
                 </div>
-              ))}
-            </div>
+                <h3 className="font-['Syne'] text-lg font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-white/50 font-['Plus_Jakarta_Sans'] text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
 
           {/* Social share nudge */}
           <div
-            className="max-w-lg mx-auto rounded-3xl p-8 mb-12"
+            className="max-w-lg mx-auto rounded-3xl p-8 mb-12 text-center"
             style={{
               background: "linear-gradient(135deg, rgba(124,58,237,0.15), rgba(236,72,153,0.15))",
               border: "1px solid rgba(168,85,247,0.25)",
@@ -233,10 +285,7 @@ export default function ThankYou() {
             <Button
               asChild
               className="font-['Syne'] font-bold rounded-full px-8"
-              style={{
-                background: "linear-gradient(135deg, #7c3aed, #ec4899)",
-                border: "none",
-              }}
+              style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)", border: "none" }}
             >
               <a
                 href="https://merchdrop.se"
@@ -251,11 +300,13 @@ export default function ThankYou() {
           </div>
 
           {/* Back to home */}
-          <Link href="/">
-            <button className="text-white/40 hover:text-white/70 transition-colors font-['Plus_Jakarta_Sans'] text-sm underline underline-offset-4">
-              Tillbaka till startsidan
-            </button>
-          </Link>
+          <div className="text-center">
+            <Link href="/">
+              <button className="text-white/40 hover:text-white/70 transition-colors font-['Plus_Jakarta_Sans'] text-sm underline underline-offset-4">
+                Tillbaka till startsidan
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -231,7 +231,7 @@ function LeadForm() {
     onSuccess: () => {
       // Fire Meta Pixel Lead event (only if user has accepted cookies)
       trackLead(form.email);
-      navigate("/tack");
+      navigate(`/tack?email=${encodeURIComponent(form.email)}`);
     },
     onError: (err) => {
       toast.error("Något gick fel. Försök igen eller kontakta oss direkt.");

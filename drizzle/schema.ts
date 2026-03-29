@@ -50,3 +50,23 @@ export const merchdropLeads = mysqlTable("merchdrop_leads", {
 
 export type MerchdropLead = typeof merchdropLeads.$inferSelect;
 export type InsertMerchdropLead = typeof merchdropLeads.$inferInsert;
+
+/**
+ * Stores AI-generated design requests and results per lead.
+ */
+export const merchdropDesigns = mysqlTable("merchdrop_designs", {
+  id: int("id").autoincrement().primaryKey(),
+  leadEmail: varchar("leadEmail", { length: 320 }).notNull(),
+  industry: varchar("industry", { length: 128 }),
+  vibe: varchar("vibe", { length: 128 }),
+  slogan: text("slogan"),
+  colorPreference: varchar("colorPreference", { length: 64 }),
+  /** URL to the generated design image */
+  designUrl: text("designUrl"),
+  /** Generation status: pending | done | failed */
+  status: varchar("status", { length: 32 }).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type MerchdropDesign = typeof merchdropDesigns.$inferSelect;
+export type InsertMerchdropDesign = typeof merchdropDesigns.$inferInsert;

@@ -10,4 +10,5 @@ export const ENV = {
   hdlApiKey: process.env.HDL_API_KEY ?? "",
   resendApiKey: process.env.RESEND_API_KEY ?? "",
   cronSecret: process.env.CRON_SECRET ?? "",
+  openaiApiKey: process.env.OPENAI_API_KEY ?? "",
 };
