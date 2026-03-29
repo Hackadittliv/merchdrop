@@ -53,3 +53,4 @@
 - [x] Fire Lead event on form submission (consent required)
 - [x] Trim meta keywords to max 8 focused terms
 - [x] Shorten meta description to max 160 characters
+- [ ] Integrate HDL CRM API on lead form submission (source=merchdrop, track=merchdrop)
